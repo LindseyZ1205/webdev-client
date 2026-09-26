@@ -1,0 +1,41 @@
+import Link from "next/link";
+export default function Labs() {
+  return (
+    <div id="wd-labs">
+      <h1>Labs</h1>
+      <p>Yingzi Zhang — CS5610, Section 09</p>
+      <ul>
+        <li>
+          <Link href="/labs/lab1">Lab 1: HTML Examples</Link>
+        </li>
+        <li>
+          <Link href="/labs/lab2">Lab 2: CSS Basics</Link>
+        </li>
+        <li>
+          <Link href="/labs/lab3">Lab 3: JavaScript Fundamentals</Link>
+        </li>
+        <li>
+          <Link href="/labs/lab4" id="wd-lab4-link">
+            Lab 4
+          </Link>
+        </li>
+        <li>
+          <Link href="/labs/lab5" id="wd-lab5-link">
+            Lab 5
+          </Link>
+        </li>
+        <li>
+          <Link href="/">Kambaz</Link>
+        </li>
+      </ul>
+      <a
+        id="wd-github"
+        href="https://github.com/LindseyZ1205/webdev-client"
+        target="_blank"
+        rel="noreferrer"
+      >
+        GitHub — webdev-client
+      </a>
+    </div>
+  );
+}
