@@ -3,11 +3,11 @@ export default function TOC() {
   return (
     <nav id="wd-toc" aria-label="Labs navigation">
       <p>Yingzi Zhang</p>
-      <Link href="/labs">Home</Link>
+      <Link href="/labs" id="wd-home-link">Home</Link>
       <br />
-      <Link href="/labs/lab1">Lab 1</Link>
+      <Link href="/labs/lab1" id="wd-lab1-link">Lab 1</Link>
       <br />
-      <Link href="/labs/lab2">Lab 2</Link>
+      <Link href="/labs/lab2" id="wd-lab2-link">Lab 2</Link>
       <br />
       <Link href="/labs/lab3">Lab 3</Link>
       <br />
