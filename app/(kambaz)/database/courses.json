@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "1234",
+    "name": "CS1234 React JS",
+    "subtitle": "Full Stack software developer",
+    "image": "/images/reactjs.svg"
+  },
+  {
+    "_id": "2345",
+    "name": "CS2345 Node JS",
+    "subtitle": "Server side JavaScript",
+    "image": "/images/nodejs.svg"
+  },
+  {
+    "_id": "3456",
+    "name": "CS3456 MongoDB",
+    "subtitle": "NoSQL Databases",
+    "image": "/images/mongodb.svg"
+  },
+  {
+    "_id": "CS9999",
+    "name": "CS9999 Sample Course",
+    "subtitle": "Assistant-generated sample — not my course",
+    "image": "/images/reactjs.svg"
+  }
+]

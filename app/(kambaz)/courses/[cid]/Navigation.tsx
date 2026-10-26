@@ -37,6 +37,10 @@ export default function CourseNavigation({ cid }: { cid: string }) {
         People
       </Link>
       <br />
+      {/* With AI extra; base list-group styling remains to be implemented. */}
+      <Link href={`/courses/${cid}/home`} id="wd-course-ai-link" className="list-group-item border-0 text-red-600">
+        Sample
+      </Link>
     </nav>
   );
 }

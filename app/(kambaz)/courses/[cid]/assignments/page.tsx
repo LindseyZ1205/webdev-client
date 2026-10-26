@@ -1,3 +1,4 @@
+import assignments from "../../../database/assignments.json";
 import AssignmentItem from "./AssignmentItem";
 export default async function Assignments({
   params,
@@ -5,6 +6,7 @@ export default async function Assignments({
   params: Promise<{ cid: string }>;
 }) {
   const { cid } = await params;
+  const courseAssignments = assignments.filter((assignment) => assignment.course === cid);
   return (
     <div id="wd-assignments">
       <input
@@ -25,25 +27,13 @@ export default async function Assignments({
           +
         </button>
       </h3>
+      <p>Dates and assignments below are prototype data, not actual deadlines.</p>
       <ul id="wd-assignment-list">
-        <AssignmentItem
-          cid={cid}
-          aid="a1"
-          title="A1 - ENV + HTML"
-          details="Multiple Modules | Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts"
-        />
-        <AssignmentItem
-          cid={cid}
-          aid="a2"
-          title="A2 - CSS + TAILWIND"
-          details="Multiple Modules | Not available until May 13 at 12:00am | Due May 20 at 11:59pm | 100 pts"
-        />
-        <AssignmentItem
-          cid={cid}
-          aid="a3"
-          title="A3 - JAVASCRIPT + REACT"
-          details="Multiple Modules | Not available until May 20 at 12:00am | Due May 27 at 11:59pm | 100 pts"
-        />
+        {courseAssignments.map((assignment) => (
+          <AssignmentItem key={assignment._id} cid={cid} aid={assignment._id}
+            title={assignment.title} details={assignment.details} />
+        ))}
+        {courseAssignments.length === 0 && <li>No assignments for this course.</li>}
       </ul>
     </div>
   );

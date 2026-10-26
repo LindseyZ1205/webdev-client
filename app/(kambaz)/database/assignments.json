@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "a1",
+    "course": "1234",
+    "title": "A1 - ENV + HTML",
+    "details": "Multiple Modules | Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts"
+  },
+  {
+    "_id": "a2",
+    "course": "1234",
+    "title": "A2 - CSS + TAILWIND",
+    "details": "Multiple Modules | Not available until May 13 at 12:00am | Due May 20 at 11:59pm | 100 pts"
+  },
+  {
+    "_id": "a3",
+    "course": "1234",
+    "title": "A3 - JAVASCRIPT + REACT",
+    "details": "Multiple Modules | Not available until May 20 at 12:00am | Due May 27 at 11:59pm | 100 pts"
+  },
+  {
+    "_id": "ai-a",
+    "course": "1234",
+    "title": "A9 - Sample assignment",
+    "details": "Multiple Modules | Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts"
+  },
+  {
+    "_id": "node-a1",
+    "course": "2345",
+    "title": "Node JS — Sample assignment 1 (AI)",
+    "details": "Prototype sample | 100 pts"
+  },
+  {
+    "_id": "node-a2",
+    "course": "2345",
+    "title": "Node JS — Sample assignment 2 (AI)",
+    "details": "Prototype sample | 100 pts"
+  }
+]

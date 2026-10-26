@@ -22,6 +22,11 @@ export default function TOC() {
       <Link href="/book/ch1" id="wd-toc-book-link">
         Chapter 1
       </Link>
+      <br />
+      {/* Chapter 3.8.2 With AI extension; active navigation is still unfinished. */}
+      <Link href="https://kambaz.dev/book/ch3" id="wd-book-ch3-link">
+        Book Ch3
+      </Link>
     </nav>
   );
 }

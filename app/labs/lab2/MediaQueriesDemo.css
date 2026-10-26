@@ -1,0 +1,6 @@
+/* AI range only; the original ranges and personal breakpoint remain TODO. */
+#wd-lab2 .wd-media-queries-demo .wd-mq-rule-ai { opacity: 0.55; font-weight: normal; text-decoration: none; }
+@media (max-width: 749px) {
+  #wd-lab2 .wd-media-queries-demo { background-color: purple; color: white; }
+  #wd-lab2 .wd-media-queries-demo .wd-mq-rule-ai { opacity: 1; font-weight: bold; text-decoration: underline; }
+}

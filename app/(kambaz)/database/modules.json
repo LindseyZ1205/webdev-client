@@ -1,0 +1,118 @@
+[
+  {
+    "_id": "react-week-1",
+    "course": "1234",
+    "title": "Week 1, Lecture 1 - Course Introduction, Syllabus, Agenda",
+    "lessons": [
+      {
+        "_id": "react-objectives-1",
+        "title": "LEARNING OBJECTIVES",
+        "items": [
+          "Introduction to the course",
+          "Learn what is Web Development"
+        ]
+      },
+      {
+        "_id": "react-reading-1",
+        "title": "READING",
+        "items": [
+          "Full Stack Developer - Chapter 1 - Introduction",
+          "Full Stack Developer - Chapter 2 - Creating User Interfaces"
+        ]
+      },
+      {
+        "_id": "react-slides-1",
+        "title": "SLIDES",
+        "items": [
+          "Introduction to Web Development",
+          "Creating an HTTP server with Node.js",
+          "Creating a React Application"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "react-week-2",
+    "course": "1234",
+    "title": "Week 2",
+    "lessons": [
+      {
+        "_id": "react-objectives-2",
+        "title": "LEARNING OBJECTIVES",
+        "items": [
+          "Create user interfaces with HTML",
+          "Build labeled forms and navigation links"
+        ]
+      },
+      {
+        "_id": "react-reading-2",
+        "title": "READING",
+        "items": [
+          "Chapter 1 - HTML"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "react-week-3",
+    "course": "1234",
+    "title": "Week 3",
+    "lessons": [
+      {
+        "_id": "react-objectives-3",
+        "title": "LEARNING OBJECTIVES",
+        "items": [
+          "Style pages with CSS",
+          "Explore the CSS box model"
+        ]
+      },
+      {
+        "_id": "react-reading-3",
+        "title": "READING",
+        "items": [
+          "Chapter 2 - CSS and Tailwind"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "react-ai",
+    "course": "1234",
+    "title": "Sample module (AI)",
+    "lessons": [
+      {
+        "_id": "react-ai-lesson",
+        "title": "Sample lesson (AI)",
+        "items": []
+      }
+    ]
+  },
+  {
+    "_id": "node-sample-1",
+    "course": "2345",
+    "title": "Node JS — Sample module 1 (AI)",
+    "lessons": [
+      {
+        "_id": "node-lesson-1",
+        "title": "Sample lesson: Server side JavaScript",
+        "items": [
+          "Prototype content for course filtering"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "node-sample-2",
+    "course": "2345",
+    "title": "Node JS — Sample module 2 (AI)",
+    "lessons": [
+      {
+        "_id": "node-lesson-2",
+        "title": "Sample lesson: HTTP servers",
+        "items": [
+          "Prototype content, not a real course requirement"
+        ]
+      }
+    ]
+  }
+]

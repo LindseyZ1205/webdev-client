@@ -1,0 +1,9 @@
+This note describes the Chapter 2 explicitly permitted With AI additions.
+It is NOT a complete A2 submission. All base worked examples and personal On your own
+exercises remain the student's responsibility. Missing base components make some
+integration checks pending (notably GreenCheckmark, responsive navigation, styled lists).
+AI-only components are labeled. Minimal hosts and CSS utilities make them previewable.
+No push, deployment, or submission was performed during the original A2 work.
+These additions are retained in the later A3 partial snapshot.
+Source: https://kambaz.dev/book/ch2
+Policy: https://kambaz.dev/syllabus#ai

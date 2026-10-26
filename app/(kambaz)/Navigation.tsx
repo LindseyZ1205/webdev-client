@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaCircleQuestion } from "react-icons/fa6";
 export default function KambazNavigation() {
   return (
     <nav id="wd-kambaz-navigation" aria-label="Kambaz navigation">
@@ -35,6 +36,10 @@ export default function KambazNavigation() {
         Labs
       </Link>
       <br />
+      {/* With AI extra; existing sidebar links and layout are unchanged. */}
+      <Link href="/labs" id="wd-ai-nav-help" className="block bg-black text-white p-3 text-center no-underline">
+        <FaCircleQuestion className="text-2xl" aria-hidden="true" /> Sample help (AI)
+      </Link>
     </nav>
   );
 }

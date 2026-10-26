@@ -1,15 +1,22 @@
+import assignments from "../../../../database/assignments.json";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 export default async function AssignmentEditor({
   params,
 }: {
   params: Promise<{ cid: string; aid: string }>;
 }) {
-  const { cid } = await params;
+  const { cid, aid } = await params;
+  // Student supplied both conditions; route lookup and not-found guard assembled with AI.
+  const assignment = assignments.find(
+    (assignment) => assignment.course === cid && assignment._id === aid
+  );
+  if (!assignment) notFound();
   return (
-    <div id="wd-assignments-editor">
+    <div id="wd-assignments-editor" key={cid + "/" + aid}>
       <label htmlFor="wd-name">Assignment Name</label>
       <br />
-      <input id="wd-name" defaultValue="A1 - ENV + HTML" />
+      <input id="wd-name" defaultValue={assignment.title} />
       <br />
       <br />
       <label htmlFor="wd-description">Description</label>
@@ -117,6 +124,9 @@ export default async function AssignmentEditor({
           </tr>
         </tbody>
       </table>
+      {/* With AI extra; original fields and Cancel/Save destinations remain unchanged. */}
+      <label htmlFor="wd-ai-editor-notes">Sample notes</label>
+      <textarea id="wd-ai-editor-notes" rows={3} className="block w-full rounded border border-solid border-gray-300 p-2" />
       <hr />
       <Link href={`/courses/${cid}/assignments`} id="wd-cancel">
         Cancel

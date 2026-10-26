@@ -1,0 +1,7 @@
+[
+  { "_id": "todo-1", "title": "Organize my desk", "completed": true },
+  { "_id": "todo-2", "title": "Review my notes", "completed": false },
+  { "_id": "todo-3", "title": "Finish homework", "completed": true },
+  { "_id": "todo-4", "title": "Read the textbook", "completed": false },
+  { "_id": "todo-ai-email-ta", "title": "Email the TA", "completed": true, "status": "COMPLETED" }
+]

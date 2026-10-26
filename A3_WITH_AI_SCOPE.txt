@@ -1,0 +1,76 @@
+A3 PARTIAL VERSION — NOT A COMPLETED ASSIGNMENT
+
+Initial scope: the seven explicitly marked With AI samples in Chapter 3.2.
+Current scope also includes partial textbook examples and student-drafted
+practice reviewed during step-by-step AI tutoring.
+Sources reviewed: https://kambaz.dev/book/ch3 and
+https://kambaz.dev/syllabus#ai-policy (2026-10-25).
+Created with Codex assistance. This is not a claim of independent authorship
+or completion of the assignment.
+
+The initial seven components contained only each permitted extension,
+the minimum sample inputs, and labeled display wrappers. They did not reproduce
+the full textbook base exercises. Constants are used for
+sample values that are never reassigned, to satisfy the existing lint rules.
+
+Implemented samples:
+3.2.1 VariablesAndConstants.tsx: sampleSum = 2 + 5.
+3.2.2 VariableTypes.tsx: sampleCount, sampleLabel, and their typeof strings.
+3.2.3 BooleanVariables.tsx: true6 = numberVariable !== 0.
+3.2.4 IfElse.tsx: hidden false1 short-circuit paragraph.
+3.2.5 TernaryOperator.tsx: premium = false, rendering Free.
+3.2.6 ConditionalOutputInline.tsx: admin = true, rendering Admin Inline.
+3.2.7 NullUndefined.tsx: loose and strict null/undefined comparisons.
+Subsequent tutoring: the student supplied snippets and fill-in answers in chat;
+Codex corrected syntax, especially missing JSX tags, and inserted the results.
+ConditionalOutputIfElse.tsx uses a textbook scaffold with the condition selected
+by the student; Codex assembled it and connected it to page.tsx.
+LegacyFunctions.tsx and ArrowFunctions.tsx use student-supplied expressions
+and the student's subtract(8, 3) call in LegacyFunctions.tsx. Codex assembled
+the textbook scaffolds, example calls, and display wiring.
+ImpliedReturn.tsx uses the student's a * b and n * n expressions; Codex assembled the
+textbook example calls, display wiring, and page.tsx integration.
+TemplateLiterals.tsx includes the student's username/published interpolation.
+Batch answers 2–24 were supplied by the student on 2026-10-25. Codex converted
+written expected outputs (for example nums.length = 4) into actual expressions
+and displays, rather than assignment statements. ArrayExamples.tsx and
+ObjectExamples.tsx group the corresponding exercises under ordered headings.
+Student expressions/types/props/todo data were connected with AI-generated JSX,
+types, route guards, CSS, test code, and supporting calculator exports.
+The 4 todo statuses are practice data, not actual assignment-completion records.
+Existing Dashboard/module/assignment content was migrated into courses.json,
+modules.json, and assignments.json. Additional Node course examples are labeled
+AI prototype data. Student map/filter/find expressions now drive these screens.
+The assignment editor changes its title by both course ID and assignment ID.
+page.tsx labels the combined examples and practice as incomplete work.
+
+Further work on 2026-10-25 added only explicitly marked With AI extensions:
+function/arithmetic/status samples; array and object samples; the remainder
+import row; dynamic green and gray boxes; last pathname segment and pid;
+the extra Add, Square and Highlight samples; Book Ch3 and 5+6 links; and
+Email the TA in the existing todo JSON. Supporting components and tests are
+AI-authored. The four student todo records and earlier answers are preserved.
+These extensions do not complete missing base or On your own exercises.
+
+Still required from the student:
+- Finish the remaining base Chapter 3.2 examples and review their integration.
+- Finish remaining On your own changes and browser-console/visual experiments.
+- Complete remaining textbook examples and On your own work not covered by the
+  24 batch questions, including extended array/object/TypeScript examples,
+  children/composed components, and additional Client/Server examples.
+- Classes and Styles each currently have 2 boxes, including the AI extension;
+  their base and personal boxes still need completion.
+- Add Server Information including arch, moving Labs TOC highlighting,
+  and a personal parameterized-add link distinct from the AI 5+6 example.
+- Complete Kambaz data-driven sidebar/highlighting, course name/breadcrumb,
+  and People from users.json and enrollments.json (not implemented by this batch).
+- Review the A3 rubric, explain the code, and check the final deployed behavior.
+- Prepare the required a3 branch, push, verify its Vercel branch deployment,
+  sign in on kambaz.dev, and submit both URLs.
+
+Existing unrelated A2 changes were preserved. Dashboard, modules, assignments,
+the editor, and the Home-to-Modules connection were adapted for this A3 batch.
+On 2026-10-25, the student explicitly authorized deployment and submission of
+this incomplete version, accepting possible deductions. This file records the
+implementation scope, not a submission receipt. Delivery must be verified on
+the a3 GitHub branch, its Vercel deployment, and the course submission page.

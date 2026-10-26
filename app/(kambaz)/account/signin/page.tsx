@@ -22,6 +22,9 @@ export default function Signin() {
         defaultValue="123"
       />
       <br />
+      {/* With AI extra; the original sign-in inputs and routing stay unchanged. */}
+      <label htmlFor="wd-ai-signin-note">Sample note</label>
+      <input id="wd-ai-signin-note" placeholder="sample note" className="block w-full rounded border border-solid border-gray-300 p-2" />
       <Link href="/dashboard" id="wd-signin-btn">
         Sign in
       </Link>

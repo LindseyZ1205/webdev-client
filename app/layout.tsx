@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./ai-utilities.css";
 
 export const metadata: Metadata = {
   title: "Yingzi Zhang | CS5610 Labs",

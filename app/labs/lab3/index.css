@@ -1,0 +1,9 @@
+/* Scoped sample using the student's earlier yellow choice. */
+#wd-lab3 > section { margin-block: 1rem; }
+#wd-lab3 .my-box { background-color: #ffed9b; color: #171717; padding: 1rem; }
+/* Minimal stylesheet for the explicitly permitted dynamic green sample. */
+#wd-lab3 .wd-bg-green { background-color: green; }
+#wd-lab3 .wd-fg-black { color: black; }
+#wd-lab3 .wd-padding-10px { padding: 10px; }
+#wd-lab3 #wd-destructing-imports th,
+#wd-lab3 #wd-destructing-imports td { border: 1px solid #777; padding: 0.4rem; }
