@@ -39,15 +39,14 @@ export default function Dashboard() {
       <hr />
       <div id="wd-dashboard-courses">
         {visibleCourses.map((course) => (
-          <div key={course._id}>
-            <CourseCard id={course._id} title={course.name} subtitle={course.subtitle} image={course.image} />
+          <CourseCard key={course._id} id={course._id} title={course.name} subtitle={course.subtitle} image={course.image}>
             <p>{course.number}{course.startDate && ` · Starts ${course.startDate}`}</p>
             {currentUser && (enrollments.some((e) => e.user === currentUser._id && e.course === course._id)
               ? <button className="bg-red-600 text-white" onClick={() => unenroll(currentUser._id, course._id)}>Unenroll</button>
               : <button className="bg-green-600 text-white" onClick={() => enroll(currentUser._id, course._id)}>Enroll</button>)}
             {canEdit && <><button onClick={() => setCourse({ ...course })}>Edit</button>{" "}
             <button onClick={() => { deleteCourse(course._id); setCourse(emptyCourse); }}>Delete</button></>}
-          </div>
+          </CourseCard>
         ))}
         {visibleCourses.length === 0 && <p>No enrolled courses.</p>}
       </div>
