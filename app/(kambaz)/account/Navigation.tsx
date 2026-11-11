@@ -1,12 +1,15 @@
+"use client";
 import Link from "next/link";
+import { useAccountContext } from "./AccountContext";
 export default function AccountNavigation() {
+  const { currentUser } = useAccountContext();
   return (
     <nav id="wd-account-navigation" aria-label="Account navigation">
-      <Link href="/account/signin">Signin</Link>
+      {!currentUser && <><Link href="/account/signin">Sign in</Link>
       <br />
-      <Link href="/account/signup">Signup</Link>
+      <Link href="/account/signup">Sign up</Link></>}
       <br />
-      <Link href="/account/profile">Profile</Link>
+      {currentUser && <Link href="/account/profile">Profile</Link>}
       <br />
     </nav>
   );

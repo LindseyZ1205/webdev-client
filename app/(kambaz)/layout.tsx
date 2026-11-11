@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import KambazNavigation from "./Navigation";
+import { AccountProvider } from "./account/AccountContext";
 export default function KambazLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <table>
+    <AccountProvider><table>
       <tbody>
         <tr>
           <td valign="top" width="200">
@@ -15,6 +16,6 @@ export default function KambazLayout({
           </td>
         </tr>
       </tbody>
-    </table>
+    </table></AccountProvider>
   );
 }

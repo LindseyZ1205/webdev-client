@@ -1,0 +1,5 @@
+[
+  { "_id": "sample-enrollment-1", "user": "iron_man", "course": "1234" },
+  { "_id": "sample-enrollment-2", "user": "iron_man", "course": "2345" },
+  { "_id": "sample-enrollment-3", "user": "nick_fury", "course": "3456" }
+]

@@ -1,5 +1,12 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAccountContext } from "../AccountContext";
 export default function Signin() {
+  const [username, setUsername] = useState(""); const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); const { users, setCurrentUser } = useAccountContext(); const router = useRouter();
+  const signin = () => { const user = users.find((u) => u.username === username.trim() && u.password === password); if (!user) { setError("Username or password does not match."); return; } setCurrentUser(user); router.push("/dashboard"); };
   return (
     <div id="wd-signin-screen">
       <h3>Sign in</h3>
@@ -9,7 +16,7 @@ export default function Signin() {
         id="wd-signin-username"
         placeholder="username"
         className="wd-username"
-        defaultValue="ada"
+        value={username} onChange={(e) => setUsername(e.target.value)}
       />
       <br />
       <label htmlFor="wd-signin-password">Password</label>
@@ -19,22 +26,22 @@ export default function Signin() {
         placeholder="password"
         type="password"
         className="wd-password"
-        defaultValue="123"
+        value={password} onChange={(e) => setPassword(e.target.value)}
       />
       <br />
       {/* With AI extra; the original sign-in inputs and routing stay unchanged. */}
       <label htmlFor="wd-ai-signin-note">Sample note</label>
       <input id="wd-ai-signin-note" placeholder="sample note" className="block w-full rounded border border-solid border-gray-300 p-2" />
-      <Link href="/dashboard" id="wd-signin-btn">
+      <button onClick={signin} id="wd-signin-btn">
         Sign in
-      </Link>
+      </button>
+      {error && <p role="alert">{error}</p>}
       <br />
       <Link href="/account/signup" id="wd-signup-link">
         Sign up
       </Link>
       <p>
-        Course prototype: sample credentials only; no authentication is
-        performed.
+        Course prototype: use fictional sample credentials only.
       </p>
     </div>
   );

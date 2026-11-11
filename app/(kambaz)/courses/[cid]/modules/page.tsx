@@ -8,7 +8,6 @@ export default async function Modules({ params }: { params: Promise<{ cid: strin
       <select aria-label="Publish modules" defaultValue="publish-all">
         <option value="publish-all">Publish All</option>
       </select>{" "}
-      <button type="button">+ Module</button>
       <ModuleList cid={cid} />
     </div>
   );

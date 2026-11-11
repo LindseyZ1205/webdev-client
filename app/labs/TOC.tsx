@@ -3,6 +3,8 @@ export default function TOC() {
   return (
     <nav id="wd-toc" aria-label="Labs navigation">
       <p>Yingzi Zhang</p>
+      <Link id="wd-github" href="https://github.com/LindseyZ1205/webdev-client">GitHub repository</Link>
+      <br />
       <Link href="/labs" id="wd-home-link">Home</Link>
       <br />
       <Link href="/labs/lab1" id="wd-lab1-link">Lab 1</Link>
