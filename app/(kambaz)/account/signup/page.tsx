@@ -2,18 +2,19 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { emptyUser, useAccountContext } from "../AccountContext";
+import { useAccountContext } from "../AccountContext";
+import * as client from "../client";
+import { apiError } from "../../api";
 export default function Signup() {
   const [username, setUsername] = useState(""); const [password, setPassword] = useState(""); const [verify, setVerify] = useState("");
-  const [error, setError] = useState(""); const { users, addUser, setCurrentUser } = useAccountContext(); const router = useRouter();
-  const signup = () => {
-    const normalizedUsername = username.trim();
-    if (!normalizedUsername || !password.trim() || password !== verify) { setError("Enter a username and matching passwords."); return; }
-    if (users.some((user) => user.username === normalizedUsername)) { setError("Username already exists. Choose another username."); return; }
-    const user = { ...emptyUser, _id: crypto.randomUUID(), username: normalizedUsername, password };
-    addUser(user);
-    setCurrentUser(user);
-    router.push("/account/profile");
+  const [error, setError] = useState(""); const [busy, setBusy] = useState(false);
+  const { setCurrentUser } = useAccountContext(); const router = useRouter();
+  const signup = async () => {
+    if (!username.trim() || !password.trim() || password !== verify) { setError("Enter a username and matching passwords."); return; }
+    setBusy(true); setError("");
+    try { setCurrentUser(await client.signup(username.trim(), password)); router.push("/account/profile"); }
+    catch (error) { setError(apiError(error)); }
+    finally { setBusy(false); }
   };
   return (
     <div id="wd-signup-screen">
@@ -47,11 +48,11 @@ export default function Signup() {
         className="wd-password-verify"
       />
       <br />
-      <button onClick={signup}>Sign up</button>
+      <button disabled={busy} onClick={signup}>Sign up</button>
       {error && <p role="alert">{error}</p>}
       <br />
       <Link href="/account/signin">Sign in</Link>
-      <p>Course prototype: this creates a temporary in-memory profile only.</p>
+      <p>Use fictional information only. Demo accounts reset when the server restarts.</p>
     </div>
   );
 }

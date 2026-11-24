@@ -1,0 +1,26 @@
+.lab { max-width: 1100px; padding: 0 24px 48px; font-family: Arial, sans-serif; color: #172033; line-height: 1.5; }
+.lab h1 { font-size: 2rem; margin: 10px 0; }
+.lab h2 { font-size: 1.35rem; margin: 0 0 12px; }
+.lab h3 { font-size: 1.05rem; margin: 22px 0 10px; }
+.lab p { margin: 8px 0; }
+.section { border: 1px solid #d7dce5; border-radius: 10px; background: #fff; padding: 20px; margin: 22px 0; }
+.row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin: 12px 0; }
+.field { display: flex; flex-direction: column; gap: 4px; font-size: .9rem; font-weight: 600; }
+.lab input:not([type="checkbox"]), .lab select, .lab textarea { border: 1px solid #aeb8c7; border-radius: 5px; padding: 8px 10px; min-width: 100px; max-width: 100%; font: inherit; background: #fff; color: inherit; }
+.lab input[type="checkbox"] { width: 17px; height: 17px; }
+.lab button, .link { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #aeb8c7; border-radius: 5px; padding: 7px 11px; text-decoration: none; background: #f5f7fb; color: #173c78; font: inherit; font-size: .9rem; cursor: pointer; }
+.lab button:hover, .link:hover { background: #e8eef8; }
+.lab button:disabled, .disabled { opacity: .55; cursor: not-allowed; }
+.lab button:focus-visible, .link:focus-visible { outline: 3px solid #8faef4; outline-offset: 2px; }
+.lab button[data-kind="post"] { background: #e9f2ff; color: #174db1; }
+.lab button[data-kind="get"] { background: #e6f5eb; color: #236e3c; }
+.lab button[data-kind="delete"] { color: #a02727; }
+.error { background: #fff0f0; border: 1px solid #e4b2b2; border-radius: 6px; padding: 10px; color: #9f1c1c; }
+.notice { padding: 10px; background: #fff8e8; border-radius: 6px; }
+.code { background: #f4f6f9; border-radius: 5px; padding: 12px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .85rem; }
+.todos { padding: 0; list-style: none; }
+.todo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid #e3e7ed; }
+.todoText { flex: 1; min-width: 150px; }
+.done { text-decoration: line-through; color: #667085; }
+.small { font-size: .85rem; color: #586477; }
+@media (max-width: 640px) { .lab { padding: 0 10px 30px; } .section { padding: 12px; } .lab h1 { font-size: 1.6rem; } }

@@ -1,21 +1,50 @@
 "use client";
-import { useAssignmentsStore, blankAssignment, type Assignment } from "../../../../store/assignmentsStore";
-import { notFound, useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useAssignmentsStore, blankAssignment, normalizeAssignment, type Assignment } from "../../../../store/assignmentsStore";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAccountContext } from "../../../../account/AccountContext";
+import { findAssignmentById } from "../../../assignments-client";
+import { apiError } from "../../../../api";
 export default function AssignmentEditor() {
   const { cid, aid } = useParams<{ cid: string; aid: string }>();
-  const assignments = useAssignmentsStore((s) => s.assignments);
-  const { currentUser } = useAccountContext();
+  const { currentUser, sessionLoading } = useAccountContext();
   const canEdit = currentUser?.role === "FACULTY";
-  // Student supplied both conditions; route lookup and not-found guard assembled with AI.
-  const assignment = assignments.find(
-    (assignment) => assignment.course === cid && assignment._id === aid
+  if (sessionLoading) return <p role="status">Loading account...</p>;
+  return <AssignmentLoader key={`${cid}/${aid}/${currentUser?._id ?? "anonymous"}`} cid={cid} aid={aid} canEdit={canEdit} />;
+}
+function AssignmentLoader({ cid, aid, canEdit }: { cid: string; aid: string; canEdit: boolean }) {
+  const [assignment, setAssignment] = useState<Assignment | null>(
+    aid === "new" ? normalizeAssignment({ ...blankAssignment, course: cid }) : null,
   );
-  if (aid !== "new" && !assignment) notFound();
+  const [loading, setLoading] = useState(aid !== "new");
+  const [error, setError] = useState("");
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    if (aid === "new") return;
+    let active = true;
+    findAssignmentById(aid).then((item) => {
+      if (!active) return;
+      if (item.course !== cid) {
+        setError("This assignment does not belong to the selected course.");
+        return;
+      }
+      setAssignment(normalizeAssignment(item));
+    }).catch((error) => {
+      if (active) setError(apiError(error));
+    }).finally(() => {
+      if (active) setLoading(false);
+    });
+    return () => { active = false; };
+  }, [cid, aid, attempt]);
+  if (loading) return <p role="status">Loading assignment...</p>;
+  if (error) return <main><p role="alert">{error}</p>
+    <button onClick={() => { setError(""); setLoading(true); setAttempt((value) => value + 1); }}>Try again</button>{" "}
+    <Link href={`/courses/${cid}/assignments`}>Back to Assignments</Link></main>;
+  if (!assignment) return <p>Assignment not found.</p>;
+  if (aid === "new" && !canEdit) return <main><p>Only faculty can create assignments.</p><Link href={`/courses/${cid}/assignments`}>Back to Assignments</Link></main>;
   if (!canEdit) return <main><h2>{assignment?.title ?? "Faculty access required"}</h2>{assignment ? <><p>{assignment.description}</p><p>{assignment.details}</p></> : <p>Only faculty can create assignments.</p>}<Link href={`/courses/${cid}/assignments`}>Back to Assignments</Link></main>;
-  return <EditorForm key={`${cid}/${aid}`} initial={assignment ?? { ...blankAssignment, course: cid }} />;
+  return <EditorForm initial={assignment} />;
 }
 function EditorForm({ initial }: { initial: Assignment }) {
   const [assignment, setAssignment] = useState({ ...initial });
@@ -23,17 +52,27 @@ function EditorForm({ initial }: { initial: Assignment }) {
   const router = useRouter();
   const cid = initial.course; const aid = initial._id;
   const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
   const { currentUser } = useAccountContext();
-  const save = () => {
-    if (currentUser?.role !== "FACULTY") return;
+  const save = async () => {
+    if (currentUser?.role !== "FACULTY" || saving) return;
     if (!assignment.title.trim() || !Number.isFinite(assignment.points) || assignment.points < 0) { setError("Enter an assignment name and nonnegative points."); return; }
     if (assignment.availableFrom && assignment.availableUntil && assignment.availableFrom > assignment.availableUntil) { setError("Available from must be on or before Until."); return; }
     const draft = { ...assignment, course: cid, title: assignment.title.trim(), details: `Available ${assignment.availableFrom || "not set"} – ${assignment.availableUntil || "not set"} | Due ${assignment.due || "not set"} | ${assignment.points} pts` };
-    if (aid) update(draft); else add(draft);
-    router.push(`/courses/${cid}/assignments`);
+    setError("");
+    setSaving(true);
+    try {
+      if (aid) await update(draft); else await add(draft);
+      router.push(`/courses/${cid}/assignments`);
+    } catch (error) {
+      setError(apiError(error));
+    } finally {
+      setSaving(false);
+    }
   };
   return (
     <div id="wd-assignments-editor" key={cid + "/" + aid}>
+      <fieldset disabled={saving}>
       <label htmlFor="wd-name">Assignment Name</label>
       <br />
       <input id="wd-name" value={assignment.title} onChange={(e) => setAssignment({ ...assignment, title: e.target.value })} />
@@ -147,13 +186,14 @@ function EditorForm({ initial }: { initial: Assignment }) {
       {/* With AI extra; original fields and Cancel/Save destinations remain unchanged. */}
       <label htmlFor="wd-ai-editor-notes">Sample notes</label>
       <textarea id="wd-ai-editor-notes" value={assignment.notes} onChange={(e) => setAssignment({ ...assignment, notes: e.target.value })} rows={3} className="block w-full rounded border border-solid border-gray-300 p-2" />
+      </fieldset>
       <hr />
       <Link href={`/courses/${cid}/assignments`} id="wd-cancel">
         Cancel
       </Link>{" "}
       {error && <p role="alert">{error}</p>}
-      <button onClick={save} id="wd-save">
-        Save
+      <button onClick={() => void save()} disabled={saving} id="wd-save">
+        {saving ? "Saving..." : "Save"}
       </button>
     </div>
   );

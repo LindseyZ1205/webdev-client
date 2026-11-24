@@ -1,0 +1,13 @@
+import { http } from "../api";
+import type { Course } from "../store/coursesStore";
+import type { CourseModule } from "../store/modulesStore";
+export const fetchAllCourses = async () => (await http.get<Course[]>("/api/courses")).data;
+export const findMyCourses = async () => (await http.get<Course[]>("/api/users/current/courses")).data;
+export const findCourse = async (id: string) => (await http.get<Course>(`/api/courses/${encodeURIComponent(id)}`)).data;
+export const createCourse = async (course: Course) => (await http.post<Course>("/api/users/current/courses", course)).data;
+export const updateCourse = async (course: Course) => (await http.put<Course>(`/api/courses/${encodeURIComponent(course._id)}`, course)).data;
+export const deleteCourse = async (id: string) => { await http.delete(`/api/courses/${encodeURIComponent(id)}`); };
+export const findModulesForCourse = async (cid: string) => (await http.get<CourseModule[]>(`/api/courses/${encodeURIComponent(cid)}/modules`)).data;
+export const createModuleForCourse = async (cid: string, title: string) => (await http.post<CourseModule>(`/api/courses/${encodeURIComponent(cid)}/modules`, { title, name: title, lessons: [] })).data;
+export const updateModule = async (module: CourseModule) => (await http.put<CourseModule>(`/api/modules/${encodeURIComponent(module._id)}`, { ...module, name: module.title })).data;
+export const deleteModule = async (id: string) => { await http.delete(`/api/modules/${encodeURIComponent(id)}`); };
